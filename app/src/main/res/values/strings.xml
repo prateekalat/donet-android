@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Donet</string>
+    <string name="filters">Filters</string>
+    <string name="search">search</string>
+    <string name="age_group">Age Group</string>
+    <string name="familial_status">Familial Status</string>
+    <string name="disability">Disability</string>
+    <string name="current_balance">Current Balance</string>
+    <string name="gender">Gender</string>
+    <string name="beneficiaries">Beneficiaries</string>
+
+    <string-array name="age_groups">
+        <item>No preference</item>
+        <item>Under 12</item>
+        <item>13 – 17</item>
+        <item>18 and above</item>
+    </string-array>
+    
+    <string-array name="familial_statuses">
+        <item>No preference</item>
+        <item>Married</item>
+        <item>Unmarried</item>
+    </string-array>
+
+    <string-array name="disabilities">
+        <item>No preference</item>
+        <item>Has disability</item>
+    </string-array>
+
+    <string-array name="genders">
+        <item>No preference</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="number_of_dependencies">
+        <item>No preference</item>
+        <item>0 – 2</item>
+        <item>3 – 5</item>
+        <item>More than 5</item>
+    </string-array>
+
+    <string-array name="orphan_status">
+        <item>No preference</item>
+        <item>Is an orphan</item>
+    </string-array>
+
+    <string-array name="current_balance">
+        <item>No preference</item>
+        <item>0 – 20</item>
+        <item>20 – 100</item>
+        <item>More than 100</item>
+    </string-array>
+
+</resources>
