@@ -1,10 +1,11 @@
-package io.codefundo.donet
+package io.codefundo.donet.data
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import io.codefundo.donet.R
 import java.util.*
 
 

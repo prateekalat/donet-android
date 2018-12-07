@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import io.codefundo.donet.data.User
+import io.codefundo.donet.data.UserAdapter
 import kotlinx.android.synthetic.main.activity_beneficiaries.*
 
 class BeneficiariesActivity: AppCompatActivity() {
