@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         app:barrierDirection="end"
         app:constraint_referenced_ids="labelAgeGroup,labelFamilialStatus,labelDisability,labelGender,labelCurrentBalance"
-        tools:layout_editor_absoluteX="100dp" />
+        tools:ignore="MissingConstraints" />
 
     <Spinner
         android:id="@+id/ageGroup"
@@ -124,5 +124,6 @@
         android:text="@string/search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelCurrentBalance" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

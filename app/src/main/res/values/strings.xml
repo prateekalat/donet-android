@@ -8,6 +8,7 @@
     <string name="current_balance">Current Balance</string>
     <string name="gender">Gender</string>
     <string name="beneficiaries">Beneficiaries</string>
+    <string name="view_recipients">View Recipients</string>
 
     <string-array name="age_groups">
         <item>No preference</item>

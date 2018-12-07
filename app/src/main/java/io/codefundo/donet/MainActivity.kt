@@ -1,11 +1,13 @@
 package io.codefundo.donet
 
+import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.annotation.ArrayRes
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,7 +25,14 @@ class MainActivity : AppCompatActivity() {
         currentBalance.setResource(this, R.array.current_balance)
 
         buttonSearch.setOnClickListener {
-            Toast.makeText(this, "Searching..", Toast.LENGTH_SHORT).show()
+            val progress = ProgressDialog(this)
+            progress.setTitle("Loading")
+            progress.setMessage("Features Chosen: Under 12, Unmarried, Has Disability, Male, 0 - 20")
+            progress.setCancelable(true) // disable dismiss by tapping outside of the dialog
+            progress.show()
+
+            val intent = Intent(this, BeneficiariesActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -42,5 +51,18 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu_main, menu)
 
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.beneficiaries -> {
+                val intent = Intent(this, BeneficiariesActivity::class.java)
+                startActivity(intent)
+            }
+
+            else -> return super.onOptionsItemSelected(item)
+        }
+
+        return false
     }
 }
