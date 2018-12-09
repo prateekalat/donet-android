@@ -19,7 +19,7 @@ class BeneficiariesActivity: AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(BeneficiaryViewModel::class.java)
 
-        val beneficiaryAdapter = BeneficiaryAdapter()
+        val beneficiaryAdapter = BeneficiaryAdapter(context = this)
         val beneficiaries = viewModel.getCurrentBeneficiariesUseCase.execute()
         beneficiaries.observe(this, Observer {
             beneficiaryAdapter.updateUsers(resource = it)

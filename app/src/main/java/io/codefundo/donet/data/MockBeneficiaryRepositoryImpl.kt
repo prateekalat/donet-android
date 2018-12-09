@@ -34,7 +34,9 @@ class MockBeneficiaryRepositoryImpl @Inject constructor(
         beneficiaryRetrofitService.getCurrentBeneficiaries()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
-                    onError = {},
+                    onError = {
+                        beneficiaries.value = Resource.Failure(it)
+                    },
                     onSuccess = {
                         beneficiaries.value = Resource.Success(it)
                     }

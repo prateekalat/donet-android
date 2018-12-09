@@ -1,15 +1,17 @@
 package io.codefundo.donet.data
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import io.codefundo.donet.R
 import io.codefundo.donet.domain.Resource
 
 
-class BeneficiaryAdapter : RecyclerView.Adapter<BeneficiaryAdapter.ViewHolder>() {
+class BeneficiaryAdapter(val context: Context) : RecyclerView.Adapter<BeneficiaryAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Beneficiary>()
 
@@ -30,7 +32,7 @@ class BeneficiaryAdapter : RecyclerView.Adapter<BeneficiaryAdapter.ViewHolder>()
             }
 
             is Resource.Failure -> {
-                //TODO Error handling
+                Toast.makeText(context, resource.throwable.message, Toast.LENGTH_LONG).show()
             }
 
             is Resource.Loading -> {
