@@ -1,10 +1,13 @@
 package io.codefundo.donet.domain
 
+import androidx.lifecycle.LiveData
 import io.codefundo.donet.dagger.BeneficiaryScope
 import javax.inject.Inject
 
 @BeneficiaryScope
-class SearchForNewBeneficiariesUseCase @Inject constructor(private val beneficiaryService: BeneficiaryService) {
+class SearchForNewBeneficiariesUseCase @Inject constructor(
+        private val beneficiaryRepository: BeneficiaryRepository): UseCase<Parameter, Resource> {
 
-    fun searchForNewBeneficiaries(parameters: List<Parameter>) = beneficiaryService.searchForNewBeneficiaries(parameters)
+    override fun execute(vararg args: Parameter): LiveData<Resource> =
+            beneficiaryRepository.searchForNewBeneficiaries(args.toList())
 }

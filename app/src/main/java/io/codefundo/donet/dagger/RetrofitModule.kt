@@ -7,12 +7,15 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 class RetrofitModule {
 
-    private val url = ""
+    @Provides
+    @Named("baseUrl")
+    fun provideBaseUrl(): String = "http://51a4d0b0.ngrok.io/"
 
     @Provides
     @Singleton
@@ -20,7 +23,7 @@ class RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    fun provideRetrofit(httpClient: OkHttpClient, @Named("baseUrl") url: String): Retrofit = Retrofit.Builder()
             .baseUrl(url)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .addConverterFactory(MoshiConverterFactory.create())

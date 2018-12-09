@@ -8,8 +8,8 @@ import retrofit2.http.Path
 
 interface BeneficiaryRetrofitService {
 
-    @GET("beneficiaries/{userId}")
-    fun getCurrentBeneficiaries(@Path("userId") userId: Int): Single<List<Beneficiary>>
+    @GET("beneficiaries")
+    fun getCurrentBeneficiaries(): Single<List<Beneficiary>>
 
     @GET("beneficiaries/search/{parameters}")
     fun searchForNewBeneficiaries(@Path("parameters") parameters: List<String>): Single<List<Beneficiary>>
