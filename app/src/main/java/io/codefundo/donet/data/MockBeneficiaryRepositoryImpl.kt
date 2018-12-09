@@ -10,7 +10,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
 class MockBeneficiaryRepositoryImpl @Inject constructor(
-        val beneficiaryRetrofitService: BeneficiaryRetrofitService) : BeneficiaryRepository {
+        private val beneficiaryRetrofitService: BeneficiaryRetrofitService) : BeneficiaryRepository {
 
     private val beneficiaries = MutableLiveData<Resource>()
 
@@ -23,13 +23,6 @@ class MockBeneficiaryRepositoryImpl @Inject constructor(
     }
 
     override fun getCurrentBeneficiaries(): LiveData<Resource> {
-//        beneficiaries.value = Resource.Success(
-//                listOf(
-//                        Beneficiary(1, "John Smith", 100),
-//                        Beneficiary(2, "Jane Does", 77),
-//                        Beneficiary(3, "Bart Simpson", 200)
-//                )
-//        )
 
         beneficiaryRetrofitService.getCurrentBeneficiaries()
                 .observeOn(AndroidSchedulers.mainThread())
