@@ -3,38 +3,42 @@ package io.codefundo.donet.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.codefundo.donet.domain.BeneficiaryRepository
-import io.codefundo.donet.domain.Parameter
 import io.codefundo.donet.domain.Resource
+import io.codefundo.donet.domain.subscribeWithLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
 class MockBeneficiaryRepositoryImpl @Inject constructor(
         private val beneficiaryRetrofitService: BeneficiaryRetrofitService) : BeneficiaryRepository {
 
-    private val beneficiaries = MutableLiveData<Resource>()
+    private val searchForNewBeneficiariesResult = MutableLiveData<Resource>()
+    private val getCurrentBeneficiariesResult = MutableLiveData<Resource>()
 
     override fun addNewBeneficiary(id: Int): LiveData<Resource> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun searchForNewBeneficiaries(parameters: List<Parameter>): LiveData<Resource> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun searchForNewBeneficiaries(parameters: List<String>): LiveData<Resource> {
+
+        val mapOfProperties = mutableMapOf<String, String>()
+        val keys = arrayOf("age-group", "familial", "disability", "gender", "balance")
+        parameters.forEachIndexed { index, s -> mapOfProperties[keys[index]] = s}
+
+        beneficiaryRetrofitService
+                .searchForNewBeneficiaries(mapOfProperties)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWithLiveData(searchForNewBeneficiariesResult)
+
+        return searchForNewBeneficiariesResult
     }
 
     override fun getCurrentBeneficiaries(): LiveData<Resource> {
 
-        beneficiaryRetrofitService.getCurrentBeneficiaries()
+        beneficiaryRetrofitService
+                .getCurrentBeneficiaries()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                    onError = {
-                        beneficiaries.value = Resource.Failure(it)
-                    },
-                    onSuccess = {
-                        beneficiaries.value = Resource.Success(it)
-                    }
-        )
+                .subscribeWithLiveData(getCurrentBeneficiariesResult)
 
-        return beneficiaries
+        return getCurrentBeneficiariesResult
     }
 }

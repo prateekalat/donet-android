@@ -79,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:entries="@array/age_groups"
         app:layout_constraintBottom_toBottomOf="@+id/labelAgeGroup"
         app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toTopOf="@+id/labelAgeGroup" />
@@ -87,6 +88,7 @@
         android:id="@+id/familialStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:entries="@array/familial_statuses"
         app:layout_constraintBottom_toBottomOf="@+id/labelFamilialStatus"
         app:layout_constraintStart_toStartOf="@+id/ageGroup"
         app:layout_constraintTop_toTopOf="@+id/labelFamilialStatus" />
@@ -95,6 +97,7 @@
         android:id="@+id/disability"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:entries="@array/disabilities"
         app:layout_constraintBottom_toBottomOf="@+id/labelDisability"
         app:layout_constraintStart_toStartOf="@+id/familialStatus"
         app:layout_constraintTop_toTopOf="@+id/labelDisability" />
@@ -103,6 +106,7 @@
         android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:entries="@array/genders"
         app:layout_constraintBottom_toBottomOf="@+id/labelGender"
         app:layout_constraintStart_toStartOf="@+id/disability"
         app:layout_constraintTop_toTopOf="@+id/labelGender" />
@@ -111,6 +115,7 @@
         android:id="@+id/currentBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:entries="@array/current_balance"
         app:layout_constraintBottom_toBottomOf="@+id/labelCurrentBalance"
         app:layout_constraintStart_toStartOf="@+id/gender"
         app:layout_constraintTop_toTopOf="@+id/labelCurrentBalance" />

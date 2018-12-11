@@ -15,7 +15,7 @@ class RetrofitModule {
 
     @Provides
     @Named("baseUrl")
-    fun provideBaseUrl(): String = "http://51a4d0b0.ngrok.io/"
+    fun provideBaseUrl(): String = "http://b4828c83.ngrok.io"
 
     @Provides
     @Singleton

@@ -20,7 +20,14 @@ class BeneficiariesActivity: AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(BeneficiaryViewModel::class.java)
 
         val beneficiaryAdapter = BeneficiaryAdapter(context = this)
-        val beneficiaries = viewModel.getCurrentBeneficiariesUseCase.execute()
+
+        val beneficiaries = if (intent.hasExtra("search")) {
+            val parameters = intent.getStringArrayExtra("searchParameters")
+            viewModel.searchForNewBeneficiariesUseCase.execute(*parameters)
+        } else {
+            viewModel.getCurrentBeneficiariesUseCase.execute()
+        }
+
         beneficiaries.observe(this, Observer {
             beneficiaryAdapter.updateUsers(resource = it)
         })
