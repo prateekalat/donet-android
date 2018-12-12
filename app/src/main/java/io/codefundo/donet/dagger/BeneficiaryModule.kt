@@ -3,7 +3,7 @@ package io.codefundo.donet.dagger
 import dagger.Module
 import dagger.Provides
 import io.codefundo.donet.data.BeneficiaryRetrofitService
-import io.codefundo.donet.data.MockBeneficiaryRepositoryImpl
+import io.codefundo.donet.data.BeneficiaryRepositoryImpl
 import io.codefundo.donet.domain.BeneficiaryRepository
 import retrofit2.Retrofit
 
@@ -18,5 +18,5 @@ class BeneficiaryModule {
     @Provides
     @BeneficiaryScope
     fun provideBeneficiaryRepository(beneficiaryRetrofitService: BeneficiaryRetrofitService): BeneficiaryRepository
-            = MockBeneficiaryRepositoryImpl(beneficiaryRetrofitService)
+            = BeneficiaryRepositoryImpl(beneficiaryRetrofitService)
 }

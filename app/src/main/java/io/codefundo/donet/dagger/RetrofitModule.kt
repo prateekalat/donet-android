@@ -15,7 +15,7 @@ class RetrofitModule {
 
     @Provides
     @Named("baseUrl")
-    fun provideBaseUrl(): String = "http://b4828c83.ngrok.io"
+    fun provideBaseUrl(): String = "https://11a3fdc5.ngrok.io/api/v1.0/"
 
     @Provides
     @Singleton
@@ -23,10 +23,11 @@ class RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(httpClient: OkHttpClient, @Named("baseUrl") url: String): Retrofit = Retrofit.Builder()
-            .baseUrl(url)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-            .addConverterFactory(MoshiConverterFactory.create())
-            .client(httpClient)
-            .build()
+    fun provideRetrofit(httpClient: OkHttpClient, @Named("baseUrl") url: String): Retrofit =
+            Retrofit.Builder()
+                .baseUrl(url)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .addConverterFactory(MoshiConverterFactory.create())
+                .client(httpClient)
+                .build()
 }

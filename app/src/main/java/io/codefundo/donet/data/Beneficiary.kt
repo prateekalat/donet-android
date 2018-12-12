@@ -1,10 +1,11 @@
 package io.codefundo.donet.data
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Beneficiary(
-        val id: Int,
-        val name: String,
-        val balance: Int
+        @Json(name = "ref_id") val id: Int,
+        @Json(name = "name") val name: String,
+        @Json(name = "balance") val balance: Int
 )

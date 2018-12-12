@@ -7,7 +7,8 @@ import javax.inject.Inject
 
 @BeneficiaryScope
 class AddNewBeneficiaryUseCase @Inject constructor(
-        private val beneficiaryRepository: BeneficiaryRepository): UseCase<Beneficiary, Resource> {
+        private val beneficiaryRepository: BeneficiaryRepository
+): UseCase<Beneficiary, Resource> {
 
     override fun execute(vararg args: Beneficiary): LiveData<Resource> =
             beneficiaryRepository.addNewBeneficiary(args.first().id)

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.codefundo.donet.data.BeneficiaryAdapter
+import io.codefundo.donet.data.SearchParameters
 import kotlinx.android.synthetic.main.activity_beneficiaries.*
 
 class BeneficiariesActivity: AppCompatActivity() {
@@ -19,14 +20,22 @@ class BeneficiariesActivity: AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(BeneficiaryViewModel::class.java)
 
-        val beneficiaryAdapter = BeneficiaryAdapter(context = this)
-
+        // Check if the use case is "searchForNewBeneficiaries" or "getCurrentBeneficiaries"
         val beneficiaries = if (intent.hasExtra("search")) {
-            val parameters = intent.getStringArrayExtra("searchParameters")
-            viewModel.searchForNewBeneficiariesUseCase.execute(*parameters)
+            val parameters = intent.getIntArrayExtra("searchParameters")
+            viewModel
+                    .searchForNewBeneficiariesUseCase
+                    .execute(SearchParameters.generateFromIntArray(
+                            donorId = viewModel.currentUser.id,
+                            array = parameters.toTypedArray()
+                    ))
         } else {
-            viewModel.getCurrentBeneficiariesUseCase.execute()
+            viewModel
+                    .getCurrentBeneficiariesUseCase
+                    .execute(viewModel.currentUser)
         }
+
+        val beneficiaryAdapter = BeneficiaryAdapter(context = this)
 
         beneficiaries.observe(this, Observer {
             beneficiaryAdapter.updateUsers(resource = it)

@@ -8,8 +8,9 @@ import io.codefundo.donet.domain.subscribeWithLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-class MockBeneficiaryRepositoryImpl @Inject constructor(
-        private val beneficiaryRetrofitService: BeneficiaryRetrofitService) : BeneficiaryRepository {
+class BeneficiaryRepositoryImpl @Inject constructor(
+        private val beneficiaryRetrofitService: BeneficiaryRetrofitService
+) : BeneficiaryRepository {
 
     private val searchForNewBeneficiariesResult = MutableLiveData<Resource>()
     private val getCurrentBeneficiariesResult = MutableLiveData<Resource>()
@@ -18,24 +19,26 @@ class MockBeneficiaryRepositoryImpl @Inject constructor(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun searchForNewBeneficiaries(parameters: List<String>): LiveData<Resource> {
+    override fun searchForNewBeneficiaries(parameters: Map<String, Int?>): LiveData<Resource> {
 
-        val mapOfProperties = mutableMapOf<String, String>()
-        val keys = arrayOf("age-group", "familial", "disability", "gender", "balance")
-        parameters.forEachIndexed { index, s -> mapOfProperties[keys[index]] = s}
-
-        beneficiaryRetrofitService
-                .searchForNewBeneficiaries(mapOfProperties)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWithLiveData(searchForNewBeneficiariesResult)
+        val nonNullParameters = parameters.filter { it.value != null }
+        val userId = nonNullParameters["don_id"]
+        if (userId != null) {
+            beneficiaryRetrofitService
+                    .searchForNewBeneficiaries(userId, nonNullParameters)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWithLiveData(searchForNewBeneficiariesResult)
+        } else {
+            searchForNewBeneficiariesResult.value = Resource.Failure(Throwable("User id is null"))
+        }
 
         return searchForNewBeneficiariesResult
     }
 
-    override fun getCurrentBeneficiaries(): LiveData<Resource> {
+    override fun getCurrentBeneficiaries(userId: Int): LiveData<Resource> {
 
         beneficiaryRetrofitService
-                .getCurrentBeneficiaries()
+                .getCurrentBeneficiaries(userId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWithLiveData(getCurrentBeneficiariesResult)
 

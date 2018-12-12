@@ -19,12 +19,12 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("search", true)
             intent.putExtra(
                     "searchParameters",
-                    arrayOf(
-                            ageGroup.selectedItem.toString(),
-                            familialStatus.selectedItem.toString(),
-                            disability.selectedItem.toString(),
-                            gender.selectedItem.toString(),
-                            currentBalance.selectedItem.toString()
+                    intArrayOf(
+                            gender.selectedItemPosition,
+                            ageGroup.selectedItemPosition,
+                            familialStatus.selectedItemPosition,
+                            disability.selectedItemPosition,
+                            numberOfDependencies.selectedItemPosition
                     )
             )
 

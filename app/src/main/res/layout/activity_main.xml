@@ -57,7 +57,7 @@
 
 
     <TextView
-        android:id="@+id/labelCurrentBalance"
+        android:id="@+id/labelNumberOfDependencies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="end"
-        app:constraint_referenced_ids="labelAgeGroup,labelFamilialStatus,labelDisability,labelGender,labelCurrentBalance"
+        app:constraint_referenced_ids="labelAgeGroup,labelFamilialStatus,labelDisability,labelGender,labelNumberOfDependencies"
         tools:ignore="MissingConstraints" />
 
     <Spinner
@@ -112,13 +112,13 @@
         app:layout_constraintTop_toTopOf="@+id/labelGender" />
 
     <Spinner
-        android:id="@+id/currentBalance"
+        android:id="@+id/numberOfDependencies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:entries="@array/current_balance"
-        app:layout_constraintBottom_toBottomOf="@+id/labelCurrentBalance"
+        android:entries="@array/number_of_dependencies"
+        app:layout_constraintBottom_toBottomOf="@+id/labelNumberOfDependencies"
         app:layout_constraintStart_toStartOf="@+id/gender"
-        app:layout_constraintTop_toTopOf="@+id/labelCurrentBalance" />
+        app:layout_constraintTop_toTopOf="@+id/labelNumberOfDependencies" />
 
     <Button
         android:id="@+id/buttonSearch"
@@ -128,7 +128,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelCurrentBalance" />
+        app:layout_constraintTop_toBottomOf="@+id/labelNumberOfDependencies" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

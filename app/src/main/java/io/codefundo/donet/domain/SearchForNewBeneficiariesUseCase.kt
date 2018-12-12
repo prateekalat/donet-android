@@ -6,8 +6,9 @@ import javax.inject.Inject
 
 @BeneficiaryScope
 class SearchForNewBeneficiariesUseCase @Inject constructor(
-        private val beneficiaryRepository: BeneficiaryRepository): UseCase<String, Resource> {
+        private val beneficiaryRepository: BeneficiaryRepository
+) : UseCase<Map<String, Int?>, Resource> {
 
-    override fun execute(vararg args: String): LiveData<Resource> =
-            beneficiaryRepository.searchForNewBeneficiaries(args.toList())
+    override fun execute(vararg args: Map<String, Int?>): LiveData<Resource> =
+            beneficiaryRepository.searchForNewBeneficiaries(args.first())
 }
