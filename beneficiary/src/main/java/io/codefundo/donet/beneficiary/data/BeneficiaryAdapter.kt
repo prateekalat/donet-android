@@ -1,12 +1,14 @@
 package io.codefundo.donet.beneficiary.data
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import io.codefundo.donet.beneficiary.BeneficiaryActivity
 import io.codefundo.donet.beneficiary.R
 import io.codefundo.donet.core.Resource
 
@@ -46,6 +48,15 @@ class BeneficiaryAdapter(val context: Context) : RecyclerView.Adapter<Beneficiar
         val beneficiary = items[position]
         holder.txtName.text = beneficiary.name
         holder.txtComment.text = beneficiary.balance.toString()
+
+        holder.itemView.setOnClickListener {
+            context.startActivity(
+                    Intent(
+                        context,
+                        BeneficiaryActivity::class.java
+                    )
+            )
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

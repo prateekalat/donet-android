@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import io.codefundo.donet.beneficiary.BeneficiariesActivity
+import io.codefundo.donet.beneficiary.ListBeneficiariesActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
 
         buttonSearch.setOnClickListener {
-            val intent = Intent(this, BeneficiariesActivity::class.java)
+            val intent = Intent(this, ListBeneficiariesActivity::class.java)
             intent.putExtra("search", true)
             intent.putExtra(
                     "searchParameters",
@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
+
+        setSupportActionBar(toolbar)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.beneficiaries -> {
-                val intent = Intent(this, BeneficiariesActivity::class.java)
+                val intent = Intent(this, ListBeneficiariesActivity::class.java)
                 startActivity(intent)
             }
 

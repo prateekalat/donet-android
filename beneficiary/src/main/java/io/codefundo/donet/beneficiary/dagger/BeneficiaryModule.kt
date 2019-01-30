@@ -5,6 +5,7 @@ import dagger.Provides
 import io.codefundo.donet.authentication.domain.GetAuthenticationTokenUseCase
 import io.codefundo.donet.beneficiary.data.BeneficiaryRepositoryImpl
 import io.codefundo.donet.beneficiary.data.BeneficiaryRetrofitService
+import io.codefundo.donet.beneficiary.data.MockBeneficiaryRepository
 import io.codefundo.donet.beneficiary.domain.BeneficiaryRepository
 import retrofit2.Retrofit
 
@@ -22,5 +23,6 @@ class BeneficiaryModule {
             beneficiaryRetrofitService: BeneficiaryRetrofitService,
             getAuthenticationTokenUseCase: GetAuthenticationTokenUseCase
     ): BeneficiaryRepository
-            = BeneficiaryRepositoryImpl(beneficiaryRetrofitService, getAuthenticationTokenUseCase)
+//            = BeneficiaryRepositoryImpl(beneficiaryRetrofitService, getAuthenticationTokenUseCase)
+            = MockBeneficiaryRepository()
 }
