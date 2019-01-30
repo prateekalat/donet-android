@@ -2,6 +2,7 @@ package io.codefundo.donet.beneficiary.dagger
 
 import dagger.Module
 import dagger.Provides
+import io.codefundo.donet.authentication.domain.GetAuthenticationTokenUseCase
 import io.codefundo.donet.beneficiary.data.BeneficiaryRepositoryImpl
 import io.codefundo.donet.beneficiary.data.BeneficiaryRetrofitService
 import io.codefundo.donet.beneficiary.domain.BeneficiaryRepository
@@ -17,6 +18,9 @@ class BeneficiaryModule {
 
     @Provides
     @BeneficiaryScope
-    fun provideBeneficiaryRepository(beneficiaryRetrofitService: BeneficiaryRetrofitService): BeneficiaryRepository
-            = BeneficiaryRepositoryImpl(beneficiaryRetrofitService)
+    fun provideBeneficiaryRepository(
+            beneficiaryRetrofitService: BeneficiaryRetrofitService,
+            getAuthenticationTokenUseCase: GetAuthenticationTokenUseCase
+    ): BeneficiaryRepository
+            = BeneficiaryRepositoryImpl(beneficiaryRetrofitService, getAuthenticationTokenUseCase)
 }
