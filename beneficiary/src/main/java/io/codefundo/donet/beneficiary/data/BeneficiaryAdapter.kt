@@ -46,8 +46,8 @@ class BeneficiaryAdapter(val context: Context) : RecyclerView.Adapter<Beneficiar
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val beneficiary = items[position]
-        holder.txtName.text = beneficiary.name
-        holder.txtComment.text = beneficiary.balance.toString()
+        holder.txtName.text = beneficiary.firstName
+        holder.txtComment.text = beneficiary.lastName
 
         holder.itemView.setOnClickListener {
             context.startActivity(

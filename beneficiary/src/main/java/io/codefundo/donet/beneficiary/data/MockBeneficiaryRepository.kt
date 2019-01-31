@@ -18,8 +18,8 @@ class MockBeneficiaryRepository : BeneficiaryRepository {
         searchForNewBeneficiariesResult.value = Resource.Success(listOf(
                 Beneficiary(
                         1,
-                        "John Smith",
-                        100
+                        "John",
+                        "Smith"
                 )
         ))
 
@@ -30,8 +30,8 @@ class MockBeneficiaryRepository : BeneficiaryRepository {
         getCurrentBeneficiariesResult.value = Resource.Success(listOf(
                 Beneficiary(
                         1,
-                        "John Smith",
-                        100
+                        "John",
+                        "Smith"
                 )
         ))
 

@@ -19,8 +19,6 @@ class BeneficiaryRepositoryImpl @Inject constructor(
 
     private val tokenResult = getAuthenticationTokenUseCase.execute()
 
-    private val workflowId = 5
-
     override fun addNewBeneficiary(id: Int): LiveData<Resource> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -51,7 +49,7 @@ class BeneficiaryRepositoryImpl @Inject constructor(
         val token = tokenResult.value
         if (token != null) {
             beneficiaryRetrofitService
-                    .getCurrentBeneficiaries(token.toString(), workflowId, userId)
+                    .getCurrentBeneficiaries(token.toString(), userId)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWithLiveData(getCurrentBeneficiariesResult)
         } else {

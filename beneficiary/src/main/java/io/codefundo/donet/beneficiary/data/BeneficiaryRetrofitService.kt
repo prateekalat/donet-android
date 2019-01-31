@@ -5,11 +5,10 @@ import retrofit2.http.*
 
 interface BeneficiaryRetrofitService {
 
-    @GET("contracts/{id}")
+    @GET("beneficiaries")
     fun getCurrentBeneficiaries(
             @Header("Authorization") token: String,
-            @Query("workflowId") workFlowId: Int,
-            @Path("id") userId: Int
+            @Query("userId") userId: Int
     ): Single<List<Beneficiary>>
 
     @GET("refugee/{id}")
