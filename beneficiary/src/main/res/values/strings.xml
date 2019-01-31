@@ -3,4 +3,5 @@
     <string name="beneficiaries">Beneficiaries</string>
     <string name="avatar">Avatar</string>
     <string name="donate">donate</string>
+    <string name="donate_capitalized">Donate</string>
 </resources>

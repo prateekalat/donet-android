@@ -3,7 +3,8 @@
     package="io.codefundo.donet.beneficiary">
 
     <application>
-        <activity android:name=".BeneficiaryActivity"></activity>
+        <activity android:name=".DonateActivity"></activity>
+        <activity android:name=".BeneficiaryActivity" />
     </application>
 
 </manifest>

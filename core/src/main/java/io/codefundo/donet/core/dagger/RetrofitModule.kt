@@ -23,7 +23,7 @@ class RetrofitModule {
     fun provideOkHttpClient(): OkHttpClient {
 
         val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
 
         return OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
