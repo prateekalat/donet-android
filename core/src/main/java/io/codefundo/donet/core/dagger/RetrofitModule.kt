@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Named
@@ -15,11 +16,19 @@ class RetrofitModule {
 
     @Provides
     @Named("baseUrl")
-    fun provideBaseUrl(): String = "http://fec427f1.ngrok.io/api/v2.0/"
+    fun provideBaseUrl(): String = "https://donet-emh24g-api.azurewebsites.net/api/v1/"
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient()
+    fun provideOkHttpClient(): OkHttpClient {
+
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
+
+        return OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build()
+    }
 
     @Provides
     @Singleton

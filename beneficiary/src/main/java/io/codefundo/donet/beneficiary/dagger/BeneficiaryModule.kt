@@ -23,6 +23,6 @@ class BeneficiaryModule {
             beneficiaryRetrofitService: BeneficiaryRetrofitService,
             getAuthenticationTokenUseCase: GetAuthenticationTokenUseCase
     ): BeneficiaryRepository
-//            = BeneficiaryRepositoryImpl(beneficiaryRetrofitService, getAuthenticationTokenUseCase)
-            = MockBeneficiaryRepository()
+            = BeneficiaryRepositoryImpl(beneficiaryRetrofitService, getAuthenticationTokenUseCase)
+//            = MockBeneficiaryRepository()
 }

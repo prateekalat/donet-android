@@ -2,7 +2,7 @@ package io.codefundo.donet.beneficiary
 
 import androidx.lifecycle.ViewModel
 import io.codefundo.donet.beneficiary.dagger.BeneficiaryComponentInjector
-import io.codefundo.donet.beneficiary.data.User
+import io.codefundo.donet.authentication.data.User
 import io.codefundo.donet.beneficiary.domain.AddNewBeneficiaryUseCase
 import io.codefundo.donet.beneficiary.domain.GetCurrentBeneficiariesUseCase
 import io.codefundo.donet.beneficiary.domain.SearchForNewBeneficiariesUseCase
@@ -14,10 +14,10 @@ class BeneficiaryViewModel : ViewModel() {
     @Inject lateinit var addNewBeneficiaryUseCase: AddNewBeneficiaryUseCase
     @Inject lateinit var searchForNewBeneficiariesUseCase: SearchForNewBeneficiariesUseCase
 
-    val currentUser = User(
+    var currentUser = User(
             id = 1,
-            name = "Iru Smisu",
-            comment = "E"
+            firstName = "Iru",
+            lastName = "Smisu"
     ) // TODO Get actual user
 
     init {

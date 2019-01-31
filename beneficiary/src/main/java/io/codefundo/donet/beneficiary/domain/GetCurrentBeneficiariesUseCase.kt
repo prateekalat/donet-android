@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import io.codefundo.donet.core.Resource
 import io.codefundo.donet.core.UseCase
 import io.codefundo.donet.beneficiary.dagger.BeneficiaryScope
-import io.codefundo.donet.beneficiary.data.User
+import io.codefundo.donet.authentication.data.User
 import javax.inject.Inject
 
 @BeneficiaryScope

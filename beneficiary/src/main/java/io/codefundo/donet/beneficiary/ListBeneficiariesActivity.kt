@@ -13,27 +13,28 @@ import kotlinx.android.synthetic.main.activity_list_beneficiaries.*
 
 class ListBeneficiariesActivity: AppCompatActivity() {
 
-    lateinit var viewModel: BeneficiaryViewModel
+    lateinit var beneficiaryViewModel: BeneficiaryViewModel
+//    lateinit var authenticationViewModel: AuthenticationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_beneficiaries)
 
-        viewModel = ViewModelProviders.of(this).get(BeneficiaryViewModel::class.java)
+        beneficiaryViewModel = ViewModelProviders.of(this).get(BeneficiaryViewModel::class.java)
 
         // Check if the use case is "searchForNewBeneficiaries" or "getCurrentBeneficiaries"
         val beneficiaries = if (intent.hasExtra("search")) {
             val parameters = intent.getIntArrayExtra("searchParameters")
-            viewModel
+            beneficiaryViewModel
                     .searchForNewBeneficiariesUseCase
                     .execute(SearchParameters.generateFromIntArray(
-                            donorId = viewModel.currentUser.id,
+                            donorId = beneficiaryViewModel.currentUser.id,
                             array = parameters.toTypedArray()
                     ))
         } else {
-            viewModel
+            beneficiaryViewModel
                     .getCurrentBeneficiariesUseCase
-                    .execute(viewModel.currentUser)
+                    .execute(beneficiaryViewModel.currentUser)
         }
 
         val beneficiaryAdapter = BeneficiaryAdapter(context = this)
