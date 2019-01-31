@@ -2,6 +2,7 @@ package io.codefundo.donet.authentication.dagger
 
 import dagger.Component
 import io.codefundo.donet.authentication.AuthenticationViewModel
+import io.codefundo.donet.authentication.domain.AuthenticationRepository
 import io.codefundo.donet.authentication.domain.GetAuthenticationTokenUseCase
 import io.codefundo.donet.core.dagger.AppComponent
 import retrofit2.Retrofit
@@ -13,4 +14,5 @@ interface AuthenticationComponent {
 
     fun provideRetrofit(): Retrofit
     fun provideGetAuthenticationTokenUseCase(): GetAuthenticationTokenUseCase
+    fun provideAuthenticationRepository(): AuthenticationRepository
 }

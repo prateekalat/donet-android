@@ -16,9 +16,22 @@ interface BeneficiaryRetrofitService {
             @Header("Authorization") token: String
     ): Single<List<Beneficiary>>
 
+    @GET("transaction")
+    fun getSmartContractId(
+//            @Header("Authorization") token: String,
+            @Query("userId") userId: Int
+    ): Single<Int>
+
     @POST("beneficiaries/add")
     fun addNewBeneficiary(
             @Header("Authorization") token: String,
             @Field("beneficiary") beneficiary: Beneficiary
     ): Single<Any>
+
+    @POST
+    fun donate(
+            @Url url: String,
+            @Header("Authorization") token: String,
+            @Body transactionWrapper: TransactionWrapper
+    ): Single<Int>
 }

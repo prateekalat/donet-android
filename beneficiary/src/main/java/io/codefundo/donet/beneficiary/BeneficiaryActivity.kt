@@ -16,6 +16,7 @@ import javax.inject.Inject
 class BeneficiaryActivity : AppCompatActivity() {
 
     @Inject lateinit var beneficiaryRepository: BeneficiaryRepository
+    lateinit var beneficiary: Beneficiary
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +48,7 @@ class BeneficiaryActivity : AppCompatActivity() {
                 val list = it.data
                 if (list is List<*>) {
                     val filteredList = list.filterIsInstance(Beneficiary::class.java)
-                    val beneficiary = filteredList[index]
+                    beneficiary = filteredList[index]
                     supportActionBar?.title = "${beneficiary.firstName} ${beneficiary.lastName}"
                 }
             }
@@ -55,6 +56,7 @@ class BeneficiaryActivity : AppCompatActivity() {
 
         donate.setOnClickListener {
             val intent = Intent(this, DonateActivity::class.java)
+            intent.putExtra("beneficiaryId", beneficiary.id)
             startActivity(intent)
         }
     }
