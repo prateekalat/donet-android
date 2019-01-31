@@ -11,11 +11,9 @@ interface BeneficiaryRetrofitService {
             @Query("userId") userId: Int
     ): Single<List<Beneficiary>>
 
-    @GET("refugee/{id}")
+    @GET("refugee")
     fun searchForNewBeneficiaries(
-            @Header("Authorization") token: String,
-            @Path("id") userId: Int,
-            @QueryMap parameters: Map<String, Int?>
+            @Header("Authorization") token: String
     ): Single<List<Beneficiary>>
 
     @POST("beneficiaries/add")

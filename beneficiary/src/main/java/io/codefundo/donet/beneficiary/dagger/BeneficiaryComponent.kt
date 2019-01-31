@@ -2,6 +2,7 @@ package io.codefundo.donet.beneficiary.dagger
 
 import dagger.Component
 import io.codefundo.donet.authentication.dagger.AuthenticationComponent
+import io.codefundo.donet.beneficiary.BeneficiaryActivity
 import io.codefundo.donet.beneficiary.BeneficiaryViewModel
 
 @BeneficiaryScope
@@ -11,4 +12,5 @@ import io.codefundo.donet.beneficiary.BeneficiaryViewModel
 )
 interface BeneficiaryComponent {
     fun inject(beneficiaryViewModel: BeneficiaryViewModel)
+    fun inject(beneficiaryActivity: BeneficiaryActivity)
 }

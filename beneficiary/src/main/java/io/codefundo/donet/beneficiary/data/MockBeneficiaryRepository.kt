@@ -6,6 +6,13 @@ import io.codefundo.donet.beneficiary.domain.BeneficiaryRepository
 import io.codefundo.donet.core.Resource
 
 class MockBeneficiaryRepository : BeneficiaryRepository {
+    override fun getCachedCurrentBeneficiaries(): LiveData<Resource> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getCachedSearchedBeneficiaries(): LiveData<Resource> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private val searchForNewBeneficiariesResult = MutableLiveData<Resource>()
     private val getCurrentBeneficiariesResult = MutableLiveData<Resource>()

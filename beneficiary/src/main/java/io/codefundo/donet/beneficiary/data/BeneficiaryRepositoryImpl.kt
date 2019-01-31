@@ -31,7 +31,7 @@ class BeneficiaryRepositoryImpl @Inject constructor(
             val token = tokenResult.value
             if (token != null) {
                 beneficiaryRetrofitService
-                        .searchForNewBeneficiaries(token.toString(), userId, nonNullParameters)
+                        .searchForNewBeneficiaries(token.toString())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWithLiveData(searchForNewBeneficiariesResult)
             } else {
@@ -58,4 +58,7 @@ class BeneficiaryRepositoryImpl @Inject constructor(
 
         return getCurrentBeneficiariesResult
     }
+
+    override fun getCachedSearchedBeneficiaries() = searchForNewBeneficiariesResult
+    override fun getCachedCurrentBeneficiaries() = getCurrentBeneficiariesResult
 }

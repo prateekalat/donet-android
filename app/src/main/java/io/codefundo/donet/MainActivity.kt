@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
                             numberOfDependencies.selectedItemPosition
                     )
             )
+            intent.putExtra("code", "search")
 
             startActivity(intent)
         }
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.beneficiaries -> {
                 val intent = Intent(this, ListBeneficiariesActivity::class.java)
+                intent.putExtra("code", "list")
                 startActivity(intent)
             }
 

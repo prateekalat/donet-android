@@ -9,5 +9,8 @@ interface BeneficiaryRepository {
 
     fun searchForNewBeneficiaries(parameters: Map<String, Int?>): LiveData<Resource>
 
+    fun getCachedSearchedBeneficiaries(): LiveData<Resource>
+    fun getCachedCurrentBeneficiaries(): LiveData<Resource>
+
     fun getCurrentBeneficiaries(userId: Int): LiveData<Resource>
 }

@@ -37,7 +37,7 @@ class ListBeneficiariesActivity: AppCompatActivity() {
                     .execute(beneficiaryViewModel.currentUser)
         }
 
-        val beneficiaryAdapter = BeneficiaryAdapter(context = this)
+        val beneficiaryAdapter = BeneficiaryAdapter(activity = this)
 
         beneficiaries.observe(this, Observer {
             beneficiaryAdapter.updateUsers(resource = it)

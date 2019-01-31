@@ -1,6 +1,5 @@
 package io.codefundo.donet.beneficiary.data
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +8,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import io.codefundo.donet.beneficiary.BeneficiaryActivity
+import io.codefundo.donet.beneficiary.ListBeneficiariesActivity
 import io.codefundo.donet.beneficiary.R
 import io.codefundo.donet.core.Resource
 
 
-class BeneficiaryAdapter(val context: Context) : RecyclerView.Adapter<BeneficiaryAdapter.ViewHolder>() {
+class BeneficiaryAdapter(val activity: ListBeneficiariesActivity) : RecyclerView.Adapter<BeneficiaryAdapter.ViewHolder>() {
 
     private val items = mutableListOf<Beneficiary>()
 
@@ -34,7 +34,7 @@ class BeneficiaryAdapter(val context: Context) : RecyclerView.Adapter<Beneficiar
             }
 
             is Resource.Failure -> {
-                Toast.makeText(context, resource.throwable.message, Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, resource.throwable.message, Toast.LENGTH_LONG).show()
             }
 
             is Resource.Loading -> {
@@ -50,12 +50,11 @@ class BeneficiaryAdapter(val context: Context) : RecyclerView.Adapter<Beneficiar
         holder.txtComment.text = beneficiary.lastName
 
         holder.itemView.setOnClickListener {
-            context.startActivity(
-                    Intent(
-                        context,
-                        BeneficiaryActivity::class.java
-                    )
-            )
+            val code = activity.intent.getStringExtra("code")
+            val intent = Intent(activity, BeneficiaryActivity::class.java)
+            intent.putExtra("id", position)
+            intent.putExtra("code", code)
+            activity.startActivity(intent)
         }
     }
 
