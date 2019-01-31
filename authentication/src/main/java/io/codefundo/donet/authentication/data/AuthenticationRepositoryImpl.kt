@@ -20,6 +20,8 @@ class AuthenticationRepositoryImpl @Inject constructor(
     private val user = MutableLiveData<User>()
     private val userLiveData = MutableLiveData<Resource>()
 
+    private val userRequestUrl = "https://donet-emh24g-api.azurewebsites.net/api/v1/users/me"
+
     override fun requestAccessTokenFromServer(
             url: String,
             idToken: Map<String, String>
@@ -34,7 +36,7 @@ class AuthenticationRepositoryImpl @Inject constructor(
     override fun requestUserFromServer(): LiveData<Resource> {
         val token = accessToken.value
         if (token != null) {
-            authenticationRetrofitService.getUser(token.toString())
+            authenticationRetrofitService.getUser(userRequestUrl, token.toString())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeBy(
                             onSuccess = {

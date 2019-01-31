@@ -13,8 +13,9 @@ interface AuthenticationRetrofitService {
             @FieldMap idToken: Map<String, String>
     ): Single<AccessToken>
 
-    @GET("users/me")
+    @GET
     fun getUser(
+            @Url url: String,
             @Header("Authorization") token: String
     ): Single<UserWrapper>
 }
