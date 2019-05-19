@@ -1,2 +1,2 @@
 # donet-android
-Android app for Donet (CodeFunDo++ 2018)
+Android app for Donet (Genesis 2019)
